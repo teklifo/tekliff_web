@@ -125,11 +125,16 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
           name="email"
           value={formik.values.email}
           type={'text'}
+          autoComplete={'username'}
           label={t('auth:email')}
           margin="dense"
           fullWidth
           InputProps={{
-            startAdornment: <EmailIcon />,
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailIcon />
+              </InputAdornment>
+            ),
           }}
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
@@ -140,11 +145,16 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
           name="password"
           value={formik.values.password}
           type={showPassword ? 'text' : 'password'}
+          autoComplete={'current-password'}
           label={t('auth:password')}
           margin="dense"
           fullWidth
           InputProps={{
-            startAdornment: <Lock />,
+            startAdornment: (
+              <InputAdornment position="start">
+                <Lock />
+              </InputAdornment>
+            ),
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton

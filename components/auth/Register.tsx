@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, Fragment, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import Typography from '@mui/material/Typography';
@@ -8,7 +8,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
+import MenuItem from '@mui/material/MenuItem';
 import Work from '@mui/icons-material/Work';
+import CopyrightIcon from '@mui/icons-material/Copyright';
 import EmailIcon from '@mui/icons-material/Email';
 import Lock from '@mui/icons-material/Lock';
 import Visibility from '@mui/icons-material/Visibility';
@@ -19,9 +21,11 @@ import * as yup from 'yup';
 import { registerUser } from '../../actions/auth';
 import Failure from '../../utils/errors/failure';
 import ServerError from '../../utils/errors/serverError';
+import { CompanyType } from '../../types';
 
 interface RegisterForm {
-  displayName: string;
+  name: string;
+  type: CompanyType;
   email: string;
   password: string;
 }
@@ -36,6 +40,17 @@ const Register: FC = () => {
 
   const { t } = useTranslation();
 
+  const companyTypes = [
+    {
+      value: 'entity',
+      label: t('auth:entity'),
+    },
+    {
+      value: 'physical',
+      label: t('auth:physical'),
+    },
+  ];
+
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -45,7 +60,7 @@ const Register: FC = () => {
   });
 
   const validationSchema = yup.object({
-    displayName: yup.string().required(t('common:errorRequiredField')),
+    name: yup.string().required(t('common:errorRequiredField')),
     email: yup
       .string()
       .required(t('auth:errorEmail'))
@@ -58,18 +73,19 @@ const Register: FC = () => {
 
   const formik = useFormik<RegisterForm>({
     initialValues: {
-      displayName: '',
+      name: '',
+      type: 'entity',
       email: '',
       password: '',
     },
     validationSchema,
     onSubmit: async (values: RegisterForm) => {
-      const { displayName, email, password } = values;
+      const { name, email, password } = values;
 
       setLoading(true);
 
       try {
-        await registerUser(displayName, email, password);
+        await registerUser(name, email, password);
         router.push({ pathname: '/verification', query: { email } });
       } catch (error) {
         let errorMessage = '';
@@ -112,30 +128,65 @@ const Register: FC = () => {
         {t('auth:signUpSubtitle')}
       </Typography>
       <TextField
-        id="displayName"
-        name="displayName"
-        value={formik.values.displayName}
+        id="name"
+        name="name"
+        value={formik.values.name}
         type={'text'}
-        label={t('auth:displayName')}
+        label={t('auth:name')}
         margin="dense"
         fullWidth
         InputProps={{
-          startAdornment: <Work />,
+          startAdornment: (
+            <InputAdornment position="start">
+              <Work />
+            </InputAdornment>
+          ),
         }}
         onChange={formik.handleChange}
-        error={formik.touched.displayName && Boolean(formik.errors.displayName)}
-        helperText={formik.touched.displayName && formik.errors.displayName}
+        error={formik.touched.name && Boolean(formik.errors.name)}
+        helperText={formik.touched.name && formik.errors.name}
       />
+      <TextField
+        id="type"
+        name="type"
+        value={formik.values.type}
+        type={'text'}
+        select
+        label={t('auth:type')}
+        margin="dense"
+        fullWidth
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <CopyrightIcon />
+            </InputAdornment>
+          ),
+        }}
+        onChange={formik.handleChange}
+        error={formik.touched.type && Boolean(formik.errors.type)}
+        helperText={formik.touched.type && formik.errors.type}
+      >
+        {companyTypes.map((companyType) => (
+          <MenuItem key={companyType.value} value={companyType.value}>
+            {companyType.label}
+          </MenuItem>
+        ))}
+      </TextField>
       <TextField
         id="email"
         name="email"
         value={formik.values.email}
         type={'text'}
+        autoComplete={'username'}
         label={t('auth:email')}
         margin="dense"
         fullWidth
         InputProps={{
-          startAdornment: <EmailIcon />,
+          startAdornment: (
+            <InputAdornment position="start">
+              <EmailIcon />
+            </InputAdornment>
+          ),
         }}
         onChange={formik.handleChange}
         error={formik.touched.email && Boolean(formik.errors.email)}
@@ -146,11 +197,16 @@ const Register: FC = () => {
         name="password"
         value={formik.values.password}
         type={showPassword ? 'text' : 'password'}
+        autoComplete={'current-password'}
         label={t('auth:password')}
         margin="dense"
         fullWidth
         InputProps={{
-          startAdornment: <Lock />,
+          startAdornment: (
+            <InputAdornment position="start">
+              <Lock />
+            </InputAdornment>
+          ),
           endAdornment: (
             <InputAdornment position="end">
               <IconButton

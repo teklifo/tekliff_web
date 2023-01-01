@@ -31,3 +31,6 @@ export interface ErrorAlert {
   message: string;
   open: boolean;
 }
+
+const companyTypes = ['entity', 'physical'] as const;
+export type CompanyType = typeof companyTypes[number];
