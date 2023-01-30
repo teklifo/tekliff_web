@@ -1,26 +1,26 @@
-import React, { FC, Fragment, useState, useContext, useEffect } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import CircularProgress from '@mui/material/CircularProgress';
-import Alert from '@mui/material/Alert';
-import EmailIcon from '@mui/icons-material/Email';
-import Lock from '@mui/icons-material/Lock';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Close from '@mui/icons-material/Close';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-import { AppContext } from '../../store/appContext';
-import { loadUser, loginUser } from '../../actions/auth';
-import Failure from '../../utils/errors/failure';
-import ServerError from '../../utils/errors/serverError';
-import { ErrorAlert } from '../../types';
+import React, { FC, Fragment, useState, useContext, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import CircularProgress from "@mui/material/CircularProgress";
+import Alert from "@mui/material/Alert";
+import EmailIcon from "@mui/icons-material/Email";
+import Lock from "@mui/icons-material/Lock";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Close from "@mui/icons-material/Close";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { AppContext } from "../../store/appContext";
+import { loadUser, loginUser } from "../../actions/auth";
+import Failure from "../../utils/errors/failure";
+import ServerError from "../../utils/errors/serverError";
+import { ErrorAlert } from "../../types";
 
 interface LoginForm {
   email: string;
@@ -43,16 +43,16 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const [errorAlert, setErrorAlert] = useState<ErrorAlert>({
-    message: '',
+    message: "",
     open: false,
   });
 
   useEffect(() => {
     if (user) {
-      if (user.role === 'moderator') {
-        router.push({ pathname: '/post_review' });
+      if (user.role === "moderator") {
+        router.push({ pathname: "/post_review" });
       } else if (redirect) {
-        router.push({ pathname: '/' });
+        router.push({ pathname: "/" });
       }
     }
   }, [redirect, router, user]);
@@ -60,15 +60,15 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
   const validationSchema = yup.object({
     email: yup
       .string()
-      .required(t('auth:errorEmail'))
-      .email(t('auth:invalidEmail')),
-    password: yup.string().required(t('auth:errorPassword')),
+      .required(t("auth:errorEmail"))
+      .email(t("auth:invalidEmail")),
+    password: yup.string().required(t("auth:errorPassword")),
   });
 
   const formik = useFormik<LoginForm>({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema,
     onSubmit: async (values: LoginForm) => {
@@ -80,13 +80,13 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
         await loginUser(email, password)(dispatch);
         await loadUser()(dispatch);
       } catch (error) {
-        let errorMessage = '';
+        let errorMessage = "";
         if (error instanceof Failure) {
           errorMessage = error.message;
         } else if (error instanceof ServerError) {
-          errorMessage = t('common:serverError');
+          errorMessage = t("common:serverError");
         } else {
-          errorMessage = t('common:unknownError');
+          errorMessage = t("common:unknownError");
         }
         setErrorAlert((prevState) => {
           return { ...prevState, open: true, message: errorMessage };
@@ -103,14 +103,14 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
 
   const closeAlert = (
     _event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
     setErrorAlert((prevState) => {
-      return { ...prevState, open: false, message: '' };
+      return { ...prevState, open: false, message: "" };
     });
   };
 
@@ -118,15 +118,15 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
     <Fragment>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h1" fontSize={32} align="center">
-          {t('auth:signInSubtitle')}
+          {t("auth:signInSubtitle")}
         </Typography>
         <TextField
           id="email"
           name="email"
           value={formik.values.email}
-          type={'text'}
-          autoComplete={'username'}
-          label={t('auth:email')}
+          type={"text"}
+          autoComplete={"username"}
+          label={t("auth:email")}
           margin="dense"
           fullWidth
           InputProps={{
@@ -144,9 +144,9 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
           id="password"
           name="password"
           value={formik.values.password}
-          type={showPassword ? 'text' : 'password'}
-          autoComplete={'current-password'}
-          label={t('auth:password')}
+          type={showPassword ? "text" : "password"}
+          autoComplete={"current-password"}
+          label={t("auth:password")}
           margin="dense"
           fullWidth
           InputProps={{
@@ -183,18 +183,18 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
           {loading ? (
             <CircularProgress color="inherit" size="2rem" />
           ) : (
-            t('auth:loginButton')
+            t("auth:loginButton")
           )}
         </Button>
         <Link href="/reset_password" passHref>
           <Button variant="text" fullWidth sx={{ mt: 2 }}>
-            {t('auth:oopsforgotPassword')}
+            {t("auth:oopsforgotPassword")}
           </Button>
         </Link>
         {errorAlert.open ? (
           <Alert
             severity="error"
-            sx={{ width: '100%', mt: 2 }}
+            sx={{ width: "100%", mt: 2 }}
             action={
               <IconButton aria-label="close" size="small" onClick={closeAlert}>
                 <Close fontSize="inherit" sx={{ p: 0.2 }} />

@@ -1,10 +1,10 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
-export const primaryColor = '#0066FF';
-export const lightPrimaryColor = '#1F78FF';
-export const lightColor = '#FFFFFF';
-export const darkColor = '#1F1C21';
-export const softDarkColor = '#29262C';
+export const primaryColor = "#0066FF";
+export const lightPrimaryColor = "#1F78FF";
+export const lightColor = "#FFFFFF";
+export const darkColor = "#1F1C21";
+export const softDarkColor = "#29262C";
 
 export const lightTheme = createTheme({
   typography: {
@@ -26,7 +26,7 @@ export const darkTheme = createTheme({
     fontSize: 13,
   },
   palette: {
-    mode: 'dark',
+    mode: "dark",
     background: {
       default: darkColor,
     },

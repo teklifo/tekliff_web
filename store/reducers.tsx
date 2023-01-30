@@ -1,5 +1,5 @@
-import { Reducer } from 'react';
-import { AuthContext } from '../types';
+import { Reducer } from "react";
+import { AuthContext } from "../types";
 
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -13,12 +13,12 @@ type ActionMap<M extends { [index: string]: any }> = {
 };
 
 export enum Types {
-  LoadUser = 'LOAD_USER',
-  LoginUser = 'LOGIN_USER',
-  VerifyUser = 'VERIFY_USER',
-  Logout = 'LOGOUT',
-  DeleteUser = 'DELETE_USER',
-  SetTheme = 'SET_THEME',
+  LoadUser = "LOAD_USER",
+  LoginUser = "LOGIN_USER",
+  VerifyUser = "VERIFY_USER",
+  Logout = "LOGOUT",
+  DeleteUser = "DELETE_USER",
+  SetTheme = "SET_THEME",
 }
 
 // PAYLOAD TYPES
@@ -31,7 +31,7 @@ type AuthPayload = {
 };
 
 type ThemePayload = {
-  [Types.SetTheme]: 'light' | 'dark';
+  [Types.SetTheme]: "light" | "dark";
 };
 
 // ACTION TYPES
@@ -43,7 +43,7 @@ export type ThemeActions =
 // REDUCERS
 export const authReducer: Reducer<AuthContext, AuthActions | ThemeActions> = (
   state,
-  action,
+  action
 ) => {
   switch (action.type) {
     case Types.LoadUser:
@@ -69,7 +69,7 @@ export const authReducer: Reducer<AuthContext, AuthActions | ThemeActions> = (
 };
 
 export const themeReducer: Reducer<
-  'light' | 'dark',
+  "light" | "dark",
   AuthActions | ThemeActions
 > = (state, action) => {
   switch (action.type) {

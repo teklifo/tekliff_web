@@ -7,20 +7,20 @@ import React, {
   useCallback,
   createRef,
   ReactNode,
-} from 'react';
-import Head from 'next/head';
-import Router, { useRouter } from 'next/router';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import IconButton from '@mui/material/IconButton';
-import Close from '@mui/icons-material/Close';
-import { SnackbarProvider, SnackbarKey } from 'notistack';
-import nprogress from 'nprogress';
-import { loadUser } from '../../actions/auth';
-import { AppContext } from '../../store/appContext';
-import StyledAppbar from './StyledAppBar';
-import { lightTheme, darkTheme } from '../../utils/theme';
-import StyledBottomNavigation from './StyledBottomNavigation';
+} from "react";
+import Head from "next/head";
+import Router, { useRouter } from "next/router";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
+import Close from "@mui/icons-material/Close";
+import { SnackbarProvider, SnackbarKey } from "notistack";
+import nprogress from "nprogress";
+import { loadUser } from "../../actions/auth";
+import { AppContext } from "../../store/appContext";
+import StyledAppbar from "./StyledAppBar";
+import { lightTheme, darkTheme } from "../../utils/theme";
+import StyledBottomNavigation from "./StyledBottomNavigation";
 
 const Layout: FC<{
   displayBottomNavigationBar: boolean;
@@ -49,13 +49,13 @@ const Layout: FC<{
   }, [dispatch]);
 
   useEffect(() => {
-    if (router.pathname !== '/user_load') {
+    if (router.pathname !== "/user_load") {
       loadUserFromToken();
     }
   }, [loadUserFromToken, router.pathname]);
 
   useEffect(() => {
-    setDarkMode(appTheme === 'dark');
+    setDarkMode(appTheme === "dark");
   }, [appTheme]);
 
   const notistackRef = createRef<SnackbarProvider>();
@@ -65,15 +65,15 @@ const Layout: FC<{
     };
   };
 
-  Router.events.on('routeChangeStart', () => {
+  Router.events.on("routeChangeStart", () => {
     return nprogress.start();
   });
 
-  Router.events.on('routeChangeComplete', () => {
+  Router.events.on("routeChangeComplete", () => {
     return nprogress.done();
   });
 
-  Router.events.on('routeChangeError', () => {
+  Router.events.on("routeChangeError", () => {
     return nprogress.done();
   });
 
@@ -99,14 +99,14 @@ const Layout: FC<{
           ref={notistackRef}
           maxSnack={3}
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
+            vertical: "bottom",
+            horizontal: "right",
           }}
           hideIconVariant={true}
           action={(key) => {
             return (
               <IconButton onClick={onClickDismiss(key)}>
-                <Close color={'secondary'} fontSize="small" sx={{ p: 0.2 }} />
+                <Close color={"secondary"} fontSize="small" sx={{ p: 0.2 }} />
               </IconButton>
             );
           }}

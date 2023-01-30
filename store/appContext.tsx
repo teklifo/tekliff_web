@@ -1,23 +1,23 @@
-import { FC, ReactNode, Dispatch, createContext, useReducer } from 'react';
-import Cookies from 'js-cookie';
-import { AuthContext } from '../types';
+import { FC, ReactNode, Dispatch, createContext, useReducer } from "react";
+import Cookies from "js-cookie";
+import { AuthContext } from "../types";
 import {
   authReducer,
   themeReducer,
   AuthActions,
   ThemeActions,
-} from './reducers';
+} from "./reducers";
 
 interface AppContextState {
   auth: AuthContext;
-  theme: 'light' | 'dark';
+  theme: "light" | "dark";
 }
 
 const contextDefaultValues: AppContextState = {
   auth: {
     isInit: false,
   },
-  theme: Cookies.get('darkMode') === 'ON' ? 'dark' : 'light',
+  theme: Cookies.get("darkMode") === "ON" ? "dark" : "light",
 };
 
 export const AppContext = createContext<{
@@ -32,7 +32,7 @@ export const AppContext = createContext<{
 
 const mainReducer = (
   { auth, theme }: AppContextState,
-  action: AuthActions | ThemeActions,
+  action: AuthActions | ThemeActions
 ) => {
   return {
     auth: authReducer(auth, action),

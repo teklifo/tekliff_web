@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import Box from '@mui/material/Box';
+import React, { FC } from "react";
+import Box from "@mui/material/Box";
 
 interface TabPanelProps {
   children?: React.ReactNode;

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 interface ErrorObject {
   msg: string;
@@ -10,9 +10,9 @@ const getErrorMessage = (error: unknown): string => {
       const errors = error.response?.data.errors.map(
         (errorMessage: ErrorObject) => {
           return errorMessage.msg;
-        },
+        }
       );
-      return errors.join('/n');
+      return errors.join("/n");
     }
     return error.message;
   }

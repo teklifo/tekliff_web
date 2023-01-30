@@ -1,15 +1,15 @@
-import React, { Fragment, useState } from 'react';
-import useTranslation from 'next-translate/useTranslation';
-import Head from 'next/head';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Login from '../components/auth/Login';
-import Register from '../components/auth/Register';
-import TabPanel from '../components/layout/TabPanel';
-import { CustomNextPage } from '../types';
+import React, { Fragment, useState } from "react";
+import useTranslation from "next-translate/useTranslation";
+import Head from "next/head";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Login from "../components/auth/Login";
+import Register from "../components/auth/Register";
+import TabPanel from "../components/layout/TabPanel";
+import { CustomNextPage } from "../types";
 
 function a11yProps(index: number) {
   return {
@@ -47,13 +47,13 @@ const Auth: CustomNextPage = () => {
             <Box
               sx={{
                 height: {
-                  sm: 'auto',
-                  md: '100vh',
+                  sm: "auto",
+                  md: "100vh",
                 },
-                backgroundImage: 'url(/img/auth_background.png)',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
+                backgroundImage: "url(/img/auth_background.png)",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
               }}
             />
           </Grid>
@@ -64,15 +64,15 @@ const Auth: CustomNextPage = () => {
               sx={{
                 mt: { xs: 4, md: 0 },
                 maxWidth: {
-                  md: 'auto',
-                  lg: '40vw',
+                  md: "auto",
+                  lg: "40vw",
                 },
-                m: 'auto',
+                m: "auto",
               }}
             >
               <Tabs value={value} onChange={handleChange} variant="fullWidth">
-                <Tab label={t('auth:signInTitle')} {...a11yProps(0)} />
-                <Tab label={t('auth:signUpTitle')} {...a11yProps(1)} />
+                <Tab label={t("auth:signInTitle")} {...a11yProps(0)} />
+                <Tab label={t("auth:signUpTitle")} {...a11yProps(1)} />
               </Tabs>
               <TabPanel value={value} index={0}>
                 <Login redirect={true} />

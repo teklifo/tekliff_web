@@ -1,14 +1,14 @@
-import '../styles/globals.css';
-import Router from 'next/router';
-import type { AppContext, AppProps } from 'next/app';
-import { NextPageContext } from 'next';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import { parseCookies, destroyCookie } from 'nookies';
-import Layout from '../components/layout/Layout';
-import { loadUserOnServer } from '../actions/auth';
-import createEmotionCache from '../utils/createEmotionCache';
-import { CustomNextPage } from '../types';
-import AppProvider from '../store/appContext';
+import "../styles/globals.css";
+import Router from "next/router";
+import type { AppContext, AppProps } from "next/app";
+import { NextPageContext } from "next";
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import { parseCookies, destroyCookie } from "nookies";
+import Layout from "../components/layout/Layout";
+import { loadUserOnServer } from "../actions/auth";
+import createEmotionCache from "../utils/createEmotionCache";
+import { CustomNextPage } from "../types";
+import AppProvider from "../store/appContext";
 
 const redirectUser = (ctx: NextPageContext, location: string) => {
   if (ctx.req && ctx.res) {
@@ -57,19 +57,19 @@ MyApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
     pageProps = await Component.getInitialProps(ctx);
   }
 
-  pageProps.initDarkMode = darkMode === 'ON';
+  pageProps.initDarkMode = darkMode === "ON";
 
-  const protectedRoute = ctx.pathname === '/profile';
+  const protectedRoute = ctx.pathname === "/profile";
 
   if (!token) {
-    destroyCookie(ctx, 'token');
-    if (protectedRoute) redirectUser(ctx, '/auth');
+    destroyCookie(ctx, "token");
+    if (protectedRoute) redirectUser(ctx, "/auth");
   } else {
     const user = await loadUserOnServer(token);
 
     if (!user) {
-      destroyCookie(ctx, 'token');
-      if (protectedRoute) redirectUser(ctx, '/auth');
+      destroyCookie(ctx, "token");
+      if (protectedRoute) redirectUser(ctx, "/auth");
     }
   }
 

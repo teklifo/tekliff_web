@@ -1,23 +1,23 @@
-import React, { FC, Fragment, useState, useContext, useRef } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Hidden from '@mui/material/Hidden';
-import MaterialLink from '@mui/material/Link';
-import { useTheme, alpha } from '@mui/material/styles';
-import PaymentsIcon from '@mui/icons-material/Payments';
-import LoginIcon from '@mui/icons-material/Login';
-import Cookies from 'js-cookie';
-import ThemeSwitch from './ThemeSwitch';
-import UserMenu from '../UserMenu';
-import { AppContext } from '../../store/appContext';
-import { setTheme } from '../../actions/theme';
-import useWindowSize from '../../utils/hooks/useWindowSize';
+import React, { FC, Fragment, useState, useContext, useRef } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Hidden from "@mui/material/Hidden";
+import MaterialLink from "@mui/material/Link";
+import { useTheme, alpha } from "@mui/material/styles";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import LoginIcon from "@mui/icons-material/Login";
+import Cookies from "js-cookie";
+import ThemeSwitch from "./ThemeSwitch";
+import UserMenu from "../UserMenu";
+import { AppContext } from "../../store/appContext";
+import { setTheme } from "../../actions/theme";
+import useWindowSize from "../../utils/hooks/useWindowSize";
 
 const StyledAppbar: FC<{
   displaySearchBar: boolean;
@@ -41,12 +41,12 @@ const StyledAppbar: FC<{
   } = useContext(AppContext);
 
   const darkModeToggle = () => {
-    const newValue = appTheme === 'dark' ? 'light' : 'dark';
+    const newValue = appTheme === "dark" ? "light" : "dark";
     setTheme(newValue)(dispatch);
   };
 
   const switchLanguage = (locale: string) => {
-    Cookies.set('NEXT_LOCALE', locale, { expires: 365 });
+    Cookies.set("NEXT_LOCALE", locale, { expires: 365 });
     router.push(router.asPath, undefined, { locale });
   };
 
@@ -54,21 +54,21 @@ const StyledAppbar: FC<{
     <Fragment>
       <AppBar
         ref={appBarRef}
-        position={!displaySearchBar ? 'fixed' : 'relative'}
-        color={'transparent'}
-        variant={'outlined'}
+        position={!displaySearchBar ? "fixed" : "relative"}
+        color={"transparent"}
+        variant={"outlined"}
         elevation={0}
         sx={{
-          borderBottom: displaySearchBar ? 'none' : null,
-          backdropFilter: 'blur(20px)',
+          borderBottom: displaySearchBar ? "none" : null,
+          backdropFilter: "blur(20px)",
           backgroundColor: alpha(theme.palette.background.default, 0.7),
         }}
       >
         <Toolbar
           sx={{
             justifyContent: {
-              md: lgScreen ? 'end' : 'space-between',
-              xs: 'center',
+              md: lgScreen ? "end" : "space-between",
+              xs: "center",
             },
           }}
         >
@@ -77,31 +77,31 @@ const StyledAppbar: FC<{
             <MaterialLink
               underline="none"
               sx={{
-                position: lgScreen ? 'absolute' : 'initial',
-                top: lgScreen ? '50%' : 'auto',
-                left: lgScreen ? '50%' : 'auto',
-                transform: lgScreen ? 'translate(-50%, -50%)' : 'auto',
+                position: lgScreen ? "absolute" : "initial",
+                top: lgScreen ? "50%" : "auto",
+                left: lgScreen ? "50%" : "auto",
+                transform: lgScreen ? "translate(-50%, -50%)" : "auto",
               }}
             >
               <Box
                 sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
+                  display: "flex",
+                  alignItems: "center",
+                  flexWrap: "wrap",
                 }}
               >
                 <PaymentsIcon fontSize="large" color="primary" sx={{ mx: 1 }} />
                 <Typography variant="h6" color="primary" fontSize="1.5rem">
-                  {t('common:projectTitle')}
+                  {t("common:projectTitle")}
                 </Typography>
               </Box>
             </MaterialLink>
           </Link>
-          <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+          <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
             <Hidden mdDown>
               {/* Theme switch */}
               <ThemeSwitch
-                checked={appTheme === 'dark'}
+                checked={appTheme === "dark"}
                 onChange={darkModeToggle}
                 sx={{ mr: 2 }}
               />
@@ -111,12 +111,12 @@ const StyledAppbar: FC<{
               ) : (
                 <Link href="/auth" passHref>
                   <Button
-                    variant={'contained'}
+                    variant={"contained"}
                     startIcon={<LoginIcon />}
                     disableElevation
                     sx={{ mr: 4 }}
                   >
-                    {t('common:authButton')}
+                    {t("common:authButton")}
                   </Button>
                 </Link>
               )}

@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { NextPage } from "next";
 
 export interface User {
   _id: string;
@@ -12,7 +12,7 @@ export interface User {
   resetPasswordToken?: string;
   resetPasswordExpires?: Date;
   picture?: string;
-  role: 'user' | 'moderator';
+  role: "user" | "moderator";
 }
 
 export interface AuthContext {
@@ -31,6 +31,3 @@ export interface ErrorAlert {
   message: string;
   open: boolean;
 }
-
-const companyTypes = ['entity', 'physical'] as const;
-export type CompanyType = typeof companyTypes[number];
