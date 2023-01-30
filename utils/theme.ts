@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
-export const primaryColor = "#0066FF";
-export const lightPrimaryColor = "#1F78FF";
+export const primaryColor = "#407BFF";
+export const lightPrimaryColor = "#709DFF";
 export const lightColor = "#FFFFFF";
 export const darkColor = "#1F1C21";
 export const softDarkColor = "#29262C";

@@ -50,7 +50,7 @@ const Auth: CustomNextPage = () => {
                   sm: "auto",
                   md: "100vh",
                 },
-                backgroundImage: "url(/img/auth_background.png)",
+                backgroundImage: "url(/img/auth.svg)",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
@@ -87,7 +87,5 @@ const Auth: CustomNextPage = () => {
     </Fragment>
   );
 };
-
-Auth.hideAppbar = true;
 
 export default Auth;

@@ -1,18 +1,16 @@
 import { NextPage } from "next";
 
 export interface User {
-  _id: string;
-  displayName: string;
+  id: string;
+  name: string;
   email: string;
-  createdAt: Date;
-  updatedAt: Date;
-  active?: boolean;
-  activationToken?: string;
-  activationTokenExpires?: Date;
-  resetPasswordToken?: string;
-  resetPasswordExpires?: Date;
-  picture?: string;
-  role: "user" | "moderator";
+  is_active: boolean;
+  activation_token?: string;
+  activation_token_expires?: Date;
+  reset_password_token?: string;
+  avatar_url: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export interface AuthContext {

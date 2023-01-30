@@ -65,7 +65,7 @@ export const loadUserOnServer = async (token: string) => {
 };
 
 export const registerUser = async (
-  displayName: string,
+  name: string,
   email: string,
   password: string
 ) => {
@@ -76,7 +76,7 @@ export const registerUser = async (
   };
 
   try {
-    await api.post("/api/users", { displayName, email, password }, config);
+    await api.post("/api/users", { name, email, password }, config);
   } catch (error) {
     if (isAxiosError(error) && error.code === "500")
       throw new ServerError(error.message);
@@ -160,10 +160,7 @@ export const logout = () => {
   };
 };
 
-export const updateUser = async (
-  token: string,
-  data: { displayName: string }
-) => {
+export const updateUser = async (token: string, data: { name: string }) => {
   const config = {
     headers: {
       Authorization: `JWT ${token}`,

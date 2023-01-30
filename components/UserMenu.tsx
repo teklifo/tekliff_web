@@ -38,7 +38,7 @@ const UserMenu: FC<{ user: User }> = ({ user }) => {
     <Fragment>
       <Tooltip title={t("common:openUserMenu")}>
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt={user.displayName} src={`${user.picture}`} />
+          <Avatar alt={user.name} src={`${user.avatar_url}`} />
         </IconButton>
       </Tooltip>
       <Menu
@@ -58,7 +58,7 @@ const UserMenu: FC<{ user: User }> = ({ user }) => {
         onClose={handleCloseUserMenu}
       >
         <MenuItem>
-          <Typography textAlign={"center"}>{user.displayName}</Typography>
+          <Typography textAlign={"center"}>{user.name}</Typography>
         </MenuItem>
         <Divider />
 

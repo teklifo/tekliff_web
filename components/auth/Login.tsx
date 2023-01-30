@@ -49,11 +49,7 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
 
   useEffect(() => {
     if (user) {
-      if (user.role === "moderator") {
-        router.push({ pathname: "/post_review" });
-      } else if (redirect) {
-        router.push({ pathname: "/" });
-      }
+      router.push({ pathname: "/" });
     }
   }, [redirect, router, user]);
 
@@ -188,7 +184,7 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
         </Button>
         <Link href="/reset_password" passHref>
           <Button variant="text" fullWidth sx={{ mt: 2 }}>
-            {t("auth:oopsforgotPassword")}
+            {t("auth:oopsForgotPassword")}
           </Button>
         </Link>
         {errorAlert.open ? (
