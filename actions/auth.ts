@@ -16,6 +16,7 @@ export const loadUser = () => {
     }>
   ) => {
     const token = Cookies.get("token");
+    const locale = Cookies.get("NEXT_LOCALE");
 
     if (!token) {
       dispatch({
@@ -27,6 +28,7 @@ export const loadUser = () => {
     const config = {
       headers: {
         Authorization: `JWT ${token}`,
+        "Accept-Language": locale,
       },
     };
 
@@ -47,9 +49,12 @@ export const loadUser = () => {
 };
 
 export const loadUserOnServer = async (token: string) => {
+  const locale = Cookies.get("NEXT_LOCALE");
+
   const config = {
     headers: {
       Authorization: `JWT ${token}`,
+      "Accept-Language": locale,
     },
   };
 
@@ -69,9 +74,12 @@ export const registerUser = async (
   email: string,
   password: string
 ) => {
+  const locale = Cookies.get("NEXT_LOCALE");
+
   const config = {
     headers: {
       "Content-Type": "application/json",
+      "Accept-Language": locale,
     },
   };
 
@@ -90,9 +98,12 @@ export const loginUser = (email: string, password: string) => {
   return async (
     dispatch: Dispatch<{ type: Types.LoginUser; payload: string }>
   ) => {
+    const locale = Cookies.get("NEXT_LOCALE");
+
     const config = {
       headers: {
         "Content-Type": "application/json",
+        "Accept-Language": locale,
       },
     };
 
@@ -121,9 +132,12 @@ export const verifyUser = (email: string, activationToken: string) => {
       payload: string;
     }>
   ) => {
+    const locale = Cookies.get("NEXT_LOCALE");
+
     const config = {
       headers: {
         "Content-Type": "application/json",
+        "Accept-Language": locale,
       },
     };
 
@@ -161,10 +175,13 @@ export const logout = () => {
 };
 
 export const updateUser = async (token: string, data: { name: string }) => {
+  const locale = Cookies.get("NEXT_LOCALE");
+
   const config = {
     headers: {
       Authorization: `JWT ${token}`,
       "Content-Type": "application/json",
+      "Accept-Language": locale,
     },
   };
 
@@ -183,10 +200,13 @@ export const changeUserPassword = async (
   token: string,
   data: { password: string; newPassword: string }
 ) => {
+  const locale = Cookies.get("NEXT_LOCALE");
+
   const config = {
     headers: {
       Authorization: `JWT ${token}`,
       "Content-Type": "application/json",
+      "Accept-Language": locale,
     },
   };
 
@@ -208,9 +228,12 @@ export const deleteUser = (token: string) => {
       payload: null;
     }>
   ) => {
+    const locale = Cookies.get("NEXT_LOCALE");
+
     const config = {
       headers: {
         Authorization: `JWT ${token}`,
+        "Accept-Language": locale,
       },
     };
 
@@ -232,9 +255,12 @@ export const deleteUser = (token: string) => {
 };
 
 export const createResetPasswordToken = async (email: string) => {
+  const locale = Cookies.get("NEXT_LOCALE");
+
   const config = {
     headers: {
       "Content-Type": "application/json",
+      "Accept-Language": locale,
     },
   };
 
@@ -253,9 +279,12 @@ export const verifyResetPasswordToken = async (
   email: string,
   resetPasswordToken: string
 ) => {
+  const locale = Cookies.get("NEXT_LOCALE");
+
   const config = {
     headers: {
       "Content-Type": "application/json",
+      "Accept-Language": locale,
     },
   };
 
@@ -285,9 +314,12 @@ export const resetPassword = (
       payload: string;
     }>
   ) => {
+    const locale = Cookies.get("NEXT_LOCALE");
+
     const config = {
       headers: {
         "Content-Type": "application/json",
+        "Accept-Language": locale,
       },
     };
 
