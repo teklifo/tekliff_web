@@ -4,6 +4,7 @@
   "pages": {
     "*": ["common"],
     "/auth": ["auth"],
-    "/check_email": ["checkEmail"]
+    "/check_email": ["checkEmail"],
+    "/reset_password": ["resetPassword"]
   }
 }

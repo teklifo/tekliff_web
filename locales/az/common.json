@@ -5,6 +5,5 @@
   "authButton": "Daxil olmaq",
   "serverError": "Səhv baş verib, amma biz artıq onu düzəldirik 🔨 Xahiş edirik, bir az gözləyin 🙏",
   "unknownError": "Ups...səhv baş verib 😕",
-  "logout": "Çıxmaq",
-  "invalidEmail": "Zəhmət olmasa, düzgün Email daxil edin"
+  "logout": "Çıxmaq"
 }
