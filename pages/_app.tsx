@@ -59,7 +59,7 @@ MyApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
 
   pageProps.initDarkMode = darkMode === "ON";
 
-  const protectedRoute = ctx.pathname === "/profile";
+  const protectedRoute = ctx.pathname === "/dashboard";
 
   if (!token) {
     destroyCookie(ctx, "token");

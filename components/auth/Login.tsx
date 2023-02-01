@@ -49,7 +49,7 @@ const Login: FC<{ redirect: boolean }> = ({ redirect }) => {
 
   useEffect(() => {
     if (user) {
-      router.push({ pathname: "/" });
+      router.push({ pathname: "/dashboard" });
     }
   }, [redirect, router, user]);
 

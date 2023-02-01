@@ -59,10 +59,7 @@ export const loadUserOnServer = async (token: string) => {
   };
 
   try {
-    const result = await api.get<User>(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth`,
-      config
-    );
+    const result = await api.get<User>(`/api/auth`, config);
     return result.data;
   } catch (error) {
     return undefined;
@@ -125,7 +122,7 @@ export const loginUser = (email: string, password: string) => {
   };
 };
 
-export const verifyUser = (email: string, activationToken: string) => {
+export const verifyUser = (activationToken: string) => {
   return async (
     dispatch: Dispatch<{
       type: Types.VerifyUser;
@@ -144,7 +141,7 @@ export const verifyUser = (email: string, activationToken: string) => {
     try {
       const response = await api.post<{ token: string }>(
         "/api/auth/verification",
-        { email, activationToken },
+        { activationToken },
         config
       );
       Cookies.set("token", response.data.token, { expires: 365 });

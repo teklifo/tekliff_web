@@ -5,6 +5,7 @@
     "*": ["common"],
     "/auth": ["auth"],
     "/check_email": ["checkEmail"],
-    "/reset_password": ["resetPassword"]
+    "/reset_password": ["resetPassword"],
+    "/verification": ["verification"]
   }
 }

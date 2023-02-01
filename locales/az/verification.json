@@ -1,5 +1,8 @@
 {
-  "verificationTitle": "Email təsdiqliyin",
-  "verificationHint": "Emaila göndərilən kodu daxil edin",
-  "verifyButton": "Təsdiqlə"
+  "successTitle": "Siz qeydiyyatdan uğurla keçdiniz",
+  "successSubtitle": "Bizimlə olduğunuz üçün təşəkkür edirik ❤️",
+  "gotToDashboard": "İşi başlamaq",
+  "failTitle": "Səhv 😞",
+  "failSubtitle": "Deyəsən, siz yanlış qeydiyyat linkindən istifadə etdiyiniz",
+  "gotToAuth": "Qeydiyyat"
 }
