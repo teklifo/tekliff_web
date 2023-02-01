@@ -18,6 +18,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { verifyUser, loadUser } from "../actions/auth";
 import { AppContext } from "../store/appContext";
+import Failure from "../utils/errors/failure";
+import ServerError from "../utils/errors/serverError";
 import { CustomNextPage } from "../types";
 
 interface QueryParams {
@@ -45,7 +47,15 @@ const Verification: CustomNextPage = () => {
       setActivationResult(true);
     } catch (error) {
       setActivationResult(false);
-      enqueueSnackbar(t("common:serverError"), {
+      let errorMessage = "";
+      if (error instanceof Failure) {
+        errorMessage = error.message;
+      } else if (error instanceof ServerError) {
+        errorMessage = t("common:serverError");
+      } else {
+        errorMessage = t("common:unknownError");
+      }
+      enqueueSnackbar(errorMessage, {
         variant: "error",
         autoHideDuration: 3000,
       });
@@ -111,7 +121,7 @@ const Verification: CustomNextPage = () => {
               <Typography variant="subtitle1" textAlign={"center"}>
                 {t("verification:successSubtitle")}
               </Typography>
-              <Link href="/auth" passHref>
+              <Link href="/dashboard" passHref>
                 <Button variant={"contained"} disableElevation sx={{ mt: 2 }}>
                   {t("verification:gotToDashboard")}
                 </Button>
