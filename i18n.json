@@ -4,8 +4,10 @@
   "pages": {
     "*": ["common"],
     "/auth": ["auth"],
-    "/check_email": ["checkEmail"],
+    "/check_email_auth": ["checkEmailAuth"],
+    "/verification": ["verification"],
     "/reset_password": ["resetPassword"],
-    "/verification": ["verification"]
+    "/check_email_reset_password": ["checkEmailResetPassword"],
+    "/set_new_password": ["setNewPassword"]
   }
 }

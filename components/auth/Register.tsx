@@ -70,7 +70,7 @@ const Register: FC = () => {
 
       try {
         await registerUser(name, email, password);
-        router.push({ pathname: "/check_email" });
+        router.push({ pathname: "/check_email_auth" });
       } catch (error) {
         let errorMessage = "";
         if (error instanceof Failure) {

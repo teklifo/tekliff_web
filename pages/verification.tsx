@@ -38,7 +38,7 @@ const Verification: CustomNextPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [activationResult, setActivationResult] = useState<boolean>(false);
 
-  const getCompanies = useCallback(async () => {
+  const checkActivationToken = useCallback(async () => {
     setLoading(true);
 
     try {
@@ -65,8 +65,8 @@ const Verification: CustomNextPage = () => {
   }, [activationToken, dispatch, enqueueSnackbar, t]);
 
   useEffect(() => {
-    getCompanies();
-  }, [getCompanies]);
+    checkActivationToken();
+  }, [checkActivationToken]);
 
   if (loading) {
     return (
@@ -111,7 +111,7 @@ const Verification: CustomNextPage = () => {
             <Fragment>
               <Image
                 src={"/img/verification_success.svg"}
-                alt="check_email"
+                alt="verification_success"
                 width={400}
                 height={400}
               />
@@ -131,7 +131,7 @@ const Verification: CustomNextPage = () => {
             <Fragment>
               <Image
                 src={"/img/verification_fail.svg"}
-                alt="check_email"
+                alt="verification_fail"
                 width={400}
                 height={400}
               />

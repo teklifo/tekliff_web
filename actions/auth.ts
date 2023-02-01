@@ -272,10 +272,7 @@ export const createResetPasswordToken = async (email: string) => {
   }
 };
 
-export const verifyResetPasswordToken = async (
-  email: string,
-  resetPasswordToken: string
-) => {
+export const verifyResetPasswordToken = async (resetPasswordToken: string) => {
   const locale = Cookies.get("NEXT_LOCALE");
 
   const config = {
@@ -288,7 +285,7 @@ export const verifyResetPasswordToken = async (
   try {
     await api.post(
       "/api/auth/check_reset_password_token",
-      { email, resetPasswordToken },
+      { resetPasswordToken },
       config
     );
   } catch (error) {
@@ -300,11 +297,7 @@ export const verifyResetPasswordToken = async (
   }
 };
 
-export const resetPassword = (
-  email: string,
-  resetPasswordToken: string,
-  password: string
-) => {
+export const resetPassword = (resetPasswordToken: string, password: string) => {
   return async (
     dispatch: Dispatch<{
       type: Types.VerifyUser;
@@ -323,7 +316,7 @@ export const resetPassword = (
     try {
       const response = await api.post<{ token: string }>(
         "/api/auth/reset_password",
-        { email, resetPasswordToken, password },
+        { resetPasswordToken, password },
         config
       );
 

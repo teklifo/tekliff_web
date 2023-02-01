@@ -50,7 +50,7 @@ const ResetPassword: CustomNextPage = () => {
       try {
         await createResetPasswordToken(email);
         router.push({
-          pathname: "/reset_password_verification",
+          pathname: "/check_email_reset_password",
           query: { email },
         });
       } catch (error) {

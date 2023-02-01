@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-const CheckEmail: NextPage = () => {
+const CheckEmailAuth: NextPage = () => {
   const { t } = useTranslation();
 
   return (
@@ -32,20 +32,20 @@ const CheckEmail: NextPage = () => {
           }}
         >
           <Image
-            src={"/img/check_email.svg"}
-            alt="check_email"
+            src={"/img/check_email_auth.svg"}
+            alt="check_email_auth"
             width={400}
             height={400}
           />
           <Typography variant="h1" textAlign={"center"} fontSize={60}>
-            {t("checkEmail:title")}
+            {t("checkEmailAuth:title")}
           </Typography>
           <Typography variant="subtitle1" textAlign={"center"}>
-            {t("checkEmail:subtitle")}
+            {t("checkEmailAuth:subtitle")}
           </Typography>
           <Link href="/auth" passHref>
             <Button variant={"contained"} disableElevation sx={{ mt: 2 }}>
-              {t("checkEmail:backToAuth")}
+              {t("checkEmailAuth:backToAuth")}
             </Button>
           </Link>
         </Box>
@@ -54,4 +54,4 @@ const CheckEmail: NextPage = () => {
   );
 };
 
-export default CheckEmail;
+export default CheckEmailAuth;

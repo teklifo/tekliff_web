@@ -3,7 +3,7 @@
 const nextTranslate = require("next-translate");
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   images: {
     domains: ["localhost"],
