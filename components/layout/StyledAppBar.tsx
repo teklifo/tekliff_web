@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Hidden from "@mui/material/Hidden";
 import { useTheme, alpha } from "@mui/material/styles";
-import PaymentsIcon from "@mui/icons-material/Payments";
+import HandshakeIcon from "@mui/icons-material/Handshake";
 import LoginIcon from "@mui/icons-material/Login";
 import Cookies from "js-cookie";
 import ThemeSwitch from "./ThemeSwitch";
@@ -34,7 +34,7 @@ const StyledAppbar: FC<{
 
   const {
     state: {
-      auth: { user, isInit },
+      auth: { user },
       theme: appTheme,
     },
     dispatch,
@@ -91,7 +91,7 @@ const StyledAppbar: FC<{
                 flexWrap: "wrap",
               }}
             >
-              <PaymentsIcon fontSize="large" color="primary" sx={{ mx: 1 }} />
+              <HandshakeIcon fontSize="large" color="primary" sx={{ mx: 1 }} />
               <Typography variant="h6" color="primary" fontSize="1.5rem">
                 {t("common:projectTitle")}
               </Typography>

@@ -8,6 +8,7 @@
     "/verification": ["verification"],
     "/reset_password": ["resetPassword"],
     "/check_email_reset_password": ["checkEmailResetPassword"],
-    "/set_new_password": ["setNewPassword"]
+    "/set_new_password": ["setNewPassword"],
+    "/edit_company": ["editCompany"]
   }
 }
