@@ -2,5 +2,7 @@
   "title": "Начальная страница",
   "subtitle": "Приступите к работе, перейдя по одной из ссылок ниже",
   "myCompaniesTitle": "Мои организации",
-  "myCompaniesSubtitle": "Список ваших организаций"
+  "myCompaniesSubtitle": "Список ваших организаций",
+  "companiesTitle": "Контрагенты",
+  "companiesSubtitle": "Поиск контрагентов"
 }

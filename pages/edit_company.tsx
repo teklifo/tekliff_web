@@ -119,7 +119,7 @@ const CreateCompany: NextPage = () => {
           created_at: new Date(Date.now()),
           updated_at: new Date(Date.now()),
         });
-        router.push({ pathname: `/` });
+        router.push({ pathname: "/dashboard" });
       } catch (error) {
         let errorMessage = "";
         if (error instanceof Failure) {

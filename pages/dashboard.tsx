@@ -46,9 +46,9 @@ const Dashboard: NextPage = () => {
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         >
           <DashboardCard
-            route="/user/companies"
-            title={t("dashboard:myCompaniesTitle")}
-            subtitle={t("dashboard:myCompaniesSubtitle")}
+            route="/companies"
+            title={t("dashboard:companiesTitle")}
+            subtitle={t("dashboard:companiesSubtitle")}
           />
           <DashboardCard
             route="/user/companies"

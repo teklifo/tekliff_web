@@ -75,3 +75,14 @@ export interface CompanyForm {
   instagram: string;
   youtube: string;
 }
+
+export interface Pagination {
+  skipped: number;
+  current: number;
+  total: number;
+}
+
+export interface PaginatedCompaniesList {
+  result: Company[];
+  pagination: Pagination;
+}
