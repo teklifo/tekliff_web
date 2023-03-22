@@ -10,6 +10,7 @@
     "/check_email_reset_password": ["checkEmailResetPassword"],
     "/set_new_password": ["setNewPassword"],
     "/edit_company": ["editCompany"],
-    "/dashboard": ["dashboard"]
+    "/dashboard": ["dashboard"],
+    "/companies": ["companies"]
   }
 }

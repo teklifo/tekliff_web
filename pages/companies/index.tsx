@@ -7,8 +7,9 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
 import Typography from "@mui/material/Typography";
-import { getCompanies } from "../actions/company";
-import { PaginatedCompaniesList } from "../types";
+import CompanyCard from "../../components/companies/CompanyCard";
+import { getCompanies } from "../../actions/company";
+import { PaginatedCompaniesList } from "../../types";
 
 const Companies: NextPage<PaginatedCompaniesList> = ({
   result,
@@ -39,11 +40,19 @@ const Companies: NextPage<PaginatedCompaniesList> = ({
           mb: 10,
         }}
       >
-        <Typography>Hello</Typography>
+        <Typography
+          variant="h1"
+          fontSize={"2rem"}
+          fontWeight="bold"
+          align="center"
+          gutterBottom
+        >
+          {t("companies:title")}
+        </Typography>
         {result.map((company) => {
-          return <div key={company.id}>{company.name}</div>;
+          return <CompanyCard key={company.id} company={company} />;
         })}
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
           <Pagination
             page={pagination.current}
             count={pagination.total}

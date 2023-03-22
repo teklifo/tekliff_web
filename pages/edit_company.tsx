@@ -151,7 +151,13 @@ const CreateCompany: NextPage = () => {
         }}
       >
         <form onSubmit={formik.handleSubmit}>
-          <Typography variant="h1" fontSize={32} align="center">
+          <Typography
+            variant="h1"
+            fontSize={"2rem"}
+            fontWeight="bold"
+            align="center"
+            gutterBottom
+          >
             {t("editCompany:titleCreate")}
           </Typography>
           {/* Main info */}
