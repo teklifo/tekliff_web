@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import type { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
-import { useTheme } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -45,7 +44,6 @@ const CreateCompany: NextPage = () => {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
-  const theme = useTheme();
 
   const {
     state: { auth },
@@ -162,11 +160,7 @@ const CreateCompany: NextPage = () => {
           </Typography>
           {/* Main info */}
           <Box sx={{ my: 4 }}>
-            <Typography
-              variant="h5"
-              align="left"
-              sx={{ color: theme.palette.text.secondary, mb: 1 }}
-            >
+            <Typography variant="h5" align="left" color="text.secondary">
               {t("editCompany:mainInfo")}
             </Typography>
             <Divider sx={{ mb: 2 }} />
@@ -279,11 +273,7 @@ const CreateCompany: NextPage = () => {
           </Box>
           {/* Contacts */}
           <Box sx={{ my: 4 }}>
-            <Typography
-              variant="h5"
-              align="left"
-              sx={{ color: theme.palette.text.secondary, mb: 1 }}
-            >
+            <Typography variant="h5" align="left" color="text.secondary">
               {t("editCompany:contacts")}
             </Typography>
             <Divider sx={{ mb: 2 }} />
@@ -291,11 +281,7 @@ const CreateCompany: NextPage = () => {
           </Box>
           {/* Socials */}
           <Box sx={{ my: 4 }}>
-            <Typography
-              variant="h5"
-              align="left"
-              sx={{ color: theme.palette.text.secondary, mb: 1 }}
-            >
+            <Typography variant="h5" align="left" color="text.secondary">
               {t("editCompany:socials")}
             </Typography>
             <Divider sx={{ mb: 2 }} />

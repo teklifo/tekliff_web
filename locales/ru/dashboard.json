@@ -4,5 +4,7 @@
   "myCompaniesTitle": "Мои организации",
   "myCompaniesSubtitle": "Список ваших организаций",
   "companiesTitle": "Контрагенты",
-  "companiesSubtitle": "Поиск контрагентов"
+  "companiesSubtitle": "Поиск контрагентов",
+  "itemsDownloadTitle": "Загрузить номенклатуру",
+  "itemsDownloadSubtitle": "Загрузка номенклатуры из внешних файлов"
 }

@@ -11,6 +11,7 @@
     "/set_new_password": ["setNewPassword"],
     "/edit_company": ["editCompany"],
     "/dashboard": ["dashboard"],
-    "/companies": ["companies"]
+    "/companies": ["companies"],
+    "/items_download": ["itemsDownload"]
   }
 }

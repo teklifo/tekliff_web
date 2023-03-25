@@ -56,9 +56,9 @@ const Dashboard: NextPage = () => {
             subtitle={t("dashboard:myCompaniesSubtitle")}
           />
           <DashboardCard
-            route="/user/companies"
-            title={t("dashboard:myCompaniesTitle")}
-            subtitle={t("dashboard:myCompaniesSubtitle")}
+            route="/items_download"
+            title={t("dashboard:itemsDownloadTitle")}
+            subtitle={t("dashboard:itemsDownloadSubtitle")}
           />
           <DashboardCard
             route="/user/companies"

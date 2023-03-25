@@ -1,0 +1,14 @@
+{
+  "title": "Nomenklaturanın yüklənməsi",
+  "subtitle": "Nomenklatura məlumatlarını ehtiva edən faylı seçin və sonra sütünların və tələb olunan məlumatların uyğunluğunu göstərin. Faylın ilk sətirində sütunların adı olmalıdır.",
+  "name": "Adı",
+  "externalId": "Xarici identifikator (Sizin uçot sisteminizdən nomenklatura identifikatoru)",
+  "number": "Artikul",
+  "sellPrice": "Satış qiyməti",
+  "purchasePrice": "Alış qiyməti",
+  "isService": "Xidmət (YES - xidmətdirsə, NO - maldırsa)",
+  "images": "Şəkilin URL (vergüllə bir neçə dəyər təyin edilə bilərsiz)",
+  "isAvailable": "Nomenklatura mövcuddur (YES / NO)",
+  "download": "Yükləmək",
+  "selectFile": "Faylı seçmək"
+}
