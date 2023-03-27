@@ -10,5 +10,6 @@
   "images": "Şəkilin URL (vergüllə bir neçə dəyər təyin edilə bilərsiz)",
   "isAvailable": "Nomenklatura mövcuddur (YES / NO)",
   "download": "Yükləmək",
-  "selectFile": "Faylı seçmək"
+  "selectFile": "Faylı seçmək",
+  "company": "Организация"
 }

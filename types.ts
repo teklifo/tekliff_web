@@ -9,6 +9,7 @@ export interface User {
   activation_token_expires?: Date;
   reset_password_token?: string;
   avatar_url: string;
+  companies: Company[];
   created_at: Date;
   updated_at: Date;
 }
@@ -85,4 +86,24 @@ export interface Pagination {
 export interface PaginatedCompaniesList {
   result: Company[];
   pagination: Pagination;
+}
+
+export interface ColumnInformation {
+  key: string;
+  name: string;
+}
+
+export interface Item {
+  id: number;
+  external_id: string;
+  name: string;
+  number: string;
+  is_service: boolean;
+  is_available: boolean;
+  sell_price: number;
+  purchase_price: number;
+  images: string[];
+  company: number;
+  created_at: Date;
+  updated_at: Date;
 }
