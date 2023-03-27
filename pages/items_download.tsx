@@ -24,7 +24,7 @@ import * as yup from "yup";
 import { useSnackbar } from "notistack";
 import * as XLSX from "xlsx";
 import "react-data-grid/lib/styles.css";
-import MatchFileds from "../components/itemsDownload/MatchFileds";
+import MatchFileds from "../components/itemsDownload/MatchFields";
 import { AppContext } from "../store/appContext";
 import { downloadItems } from "../actions/items";
 import Failure from "../utils/errors/failure";
