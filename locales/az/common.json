@@ -1,10 +1,14 @@
 {
-  "projectTitle": "Təklif",
+  "projectTitle": "Təkliff",
   "errorRequiredField": "Bu sahə boş ola bilməz",
   "fieldIsRequired": "Zəhmət olmasa, bu sahəni doldurun",
   "authButton": "Daxil olmaq",
   "serverError": "Səhv baş verib, amma biz artıq onu düzəldirik 🔨 Xahiş edirik, bir az gözləyin 🙏",
   "unknownError": "Ups...səhv baş verib 😕",
   "openUserMenu": "Menyu açmaq",
-  "logout": "Çıxmaq"
+  "logout": "Çıxmaq",
+  "dashboard": "Əsas məlumat",
+  "myCompaniesTitle": "Mənim təşkilatlarım",
+  "companiesTitle": "Kontragentlər",
+  "itemsDownloadTitle": "Nomenklaturanın yüklənməsi"
 }

@@ -177,7 +177,7 @@ const ItemsDownload: NextPage = () => {
           >
             {t("itemsDownload:title")}
           </Typography>
-          <Typography align="center" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography align="center" color="text.secondary" sx={{ mb: 2 }}>
             {t("itemsDownload:subtitle")}
           </Typography>
           <TextField
@@ -192,7 +192,7 @@ const ItemsDownload: NextPage = () => {
             onChange={formik.handleChange}
             error={formik.touched.company && Boolean(formik.errors.company)}
             helperText={formik.touched.company && formik.errors.company}
-            sx={{ mb: 4 }}
+            sx={{ mb: 2 }}
           >
             {user.companies.map((company) => (
               <MenuItem key={company.id} value={company.id}>
@@ -202,6 +202,7 @@ const ItemsDownload: NextPage = () => {
           </TextField>
           <Button
             variant="contained"
+            fullWidth
             component="label"
             startIcon={<InsertDriveFileIcon />}
           >
@@ -214,27 +215,31 @@ const ItemsDownload: NextPage = () => {
               onChange={readFile}
             />
           </Button>
-          <Box sx={{ my: 4 }}>
-            <DataGrid columns={columns} rows={rows} />
-          </Box>
-          <MatchFileds formik={formik} columns={columns} />
-          <Button
-            type="submit"
-            variant="contained"
-            startIcon={<FileDownloadIcon />}
-            fullWidth
-            disabled={loading}
-            disableElevation
-            sx={{ py: 1, mt: 4 }}
-          >
-            {loading ? (
-              <CircularProgress color="inherit" size="2rem" />
-            ) : (
-              <Typography fontWeight="bold">
-                {t("itemsDownload:download")}
-              </Typography>
-            )}
-          </Button>
+          {columns.length > 0 && (
+            <Fragment>
+              <Box sx={{ my: 2 }}>
+                <DataGrid columns={columns} rows={rows} />
+              </Box>
+              <MatchFileds formik={formik} columns={columns} />
+              <Button
+                type="submit"
+                variant="contained"
+                startIcon={<FileDownloadIcon />}
+                fullWidth
+                disabled={loading}
+                disableElevation
+                sx={{ py: 1, mt: 2 }}
+              >
+                {loading ? (
+                  <CircularProgress color="inherit" size="2rem" />
+                ) : (
+                  <Typography fontWeight="bold">
+                    {t("itemsDownload:download")}
+                  </Typography>
+                )}
+              </Button>
+            </Fragment>
+          )}
         </form>
       </Container>
     </Fragment>

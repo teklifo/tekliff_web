@@ -12,6 +12,7 @@ import Head from "next/head";
 import Router, { useRouter } from "next/router";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Close from "@mui/icons-material/Close";
 import { SnackbarProvider, SnackbarKey } from "notistack";
@@ -20,21 +21,13 @@ import { loadUser } from "../../actions/auth";
 import { AppContext } from "../../store/appContext";
 import StyledAppbar from "./StyledAppBar";
 import { lightTheme, darkTheme } from "../../utils/theme";
-import StyledBottomNavigation from "./StyledBottomNavigation";
 
 const Layout: FC<{
-  displayBottomNavigationBar: boolean;
-  displaySearchBar: boolean;
+  displayDrawer: boolean;
   hideAppbar: boolean;
   initDarkMode: boolean;
   children: ReactNode;
-}> = ({
-  displayBottomNavigationBar,
-  displaySearchBar,
-  hideAppbar,
-  initDarkMode,
-  children,
-}) => {
+}> = ({ displayDrawer, hideAppbar, initDarkMode, children }) => {
   const router = useRouter();
 
   const {
@@ -112,9 +105,18 @@ const Layout: FC<{
           }}
         >
           <CssBaseline />
-          {!hideAppbar && <StyledAppbar displaySearchBar={displaySearchBar} />}
-          <Fragment>{children}</Fragment>
-          {displayBottomNavigationBar && <StyledBottomNavigation />}
+          <Box sx={{ display: "flex" }}>
+            {!hideAppbar && <StyledAppbar />}
+            <Box
+              component="main"
+              sx={{
+                flexGrow: 1,
+                width: { md: `calc(100% - ${250}px)` },
+              }}
+            >
+              {children}
+            </Box>
+          </Box>
         </SnackbarProvider>
       </ThemeProvider>
     </Fragment>

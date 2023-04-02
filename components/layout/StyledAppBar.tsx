@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useContext, useRef } from "react";
+import React, { FC, Fragment, useContext, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
@@ -12,6 +12,7 @@ import { useTheme, alpha } from "@mui/material/styles";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import LoginIcon from "@mui/icons-material/Login";
 import Cookies from "js-cookie";
+import StyledDrawer from "./StyledDrawer";
 import ThemeSwitch from "./ThemeSwitch";
 import UserMenu from "../UserMenu";
 import { LinkBehaviour } from "../../utils/linkBehaviour";
@@ -19,9 +20,7 @@ import { AppContext } from "../../store/appContext";
 import { setTheme } from "../../actions/theme";
 import useWindowSize from "../../utils/hooks/useWindowSize";
 
-const StyledAppbar: FC<{
-  displaySearchBar: boolean;
-}> = ({ displaySearchBar }) => {
+const StyledAppbar: FC<{}> = () => {
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -31,6 +30,12 @@ const StyledAppbar: FC<{
   const appBarRef = useRef(null);
 
   const lgScreen = (width && width > 1480) || false;
+
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   const {
     state: {
@@ -54,12 +59,11 @@ const StyledAppbar: FC<{
     <Fragment>
       <AppBar
         ref={appBarRef}
-        position={!displaySearchBar ? "fixed" : "relative"}
         color={"transparent"}
         variant={"outlined"}
         elevation={0}
         sx={{
-          borderBottom: displaySearchBar ? "none" : null,
+          width: { md: `calc(100% - ${250}px)` },
           backdropFilter: "blur(20px)",
           backgroundColor: alpha(theme.palette.background.default, 0.7),
         }}
@@ -141,6 +145,12 @@ const StyledAppbar: FC<{
           </Box>
         </Toolbar>
       </AppBar>
+      {user && (
+        <StyledDrawer
+          mobileOpen={mobileOpen}
+          handleDrawerToggle={handleDrawerToggle}
+        />
+      )}
     </Fragment>
   );
 };

@@ -21,8 +21,7 @@ export interface AuthContext {
 }
 
 export type CustomNextPage<P = {}, IP = P> = NextPage<P, IP> & {
-  displayBottomNavigationBar?: boolean;
-  displaySearchBar?: boolean;
+  displayDrawer?: boolean;
   hideAppbar?: boolean;
 };
 

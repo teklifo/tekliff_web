@@ -29,15 +29,13 @@ interface MyAppProps extends AppProps {
 
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  const { displayBottomNavigationBar, displaySearchBar, hideAppbar } =
-    Component;
+  const { hideAppbar, displayDrawer } = Component;
 
   return (
     <CacheProvider value={emotionCache}>
       <AppProvider>
         <Layout
-          displayBottomNavigationBar={displayBottomNavigationBar}
-          displaySearchBar={displaySearchBar}
+          displayDrawer={displayDrawer}
           hideAppbar={hideAppbar}
           {...pageProps}
         >
