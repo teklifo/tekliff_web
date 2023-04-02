@@ -107,3 +107,8 @@ export interface Item {
   created_at: Date;
   updated_at: Date;
 }
+
+export interface PaginatedItemsList {
+  result: Item[];
+  pagination: Pagination;
+}

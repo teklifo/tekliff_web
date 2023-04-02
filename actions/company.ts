@@ -63,3 +63,28 @@ export const getCompanies = async (query: ParsedUrlQuery) => {
     }
   }
 };
+
+export const getCompany = async (id: string) => {
+  const locale = Cookies.get("NEXT_LOCALE");
+
+  const config = {
+    headers: {
+      "Accept-Language": locale,
+    },
+    params: {
+      id,
+    },
+  };
+
+  try {
+    const response = await api.get<Company>(`/api/companies/${id}`, config);
+
+    return response.data;
+  } catch (error) {
+    if (isAxiosError(error) && error.code === "500")
+      throw new ServerError(error.message);
+    else {
+      throw new Failure(getErrorMessage(error));
+    }
+  }
+};
