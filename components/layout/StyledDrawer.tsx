@@ -78,10 +78,11 @@ const StyledDrawer: FC<{
       <Box sx={{ mt: 8 }}>
         <List>
           {options.map((option) => {
+            const selected = option.route === pathname;
             return (
               <ListItem key={option.id}>
                 <ListItemButton
-                  selected={option.route === pathname}
+                  selected={selected}
                   onClick={(event) => {
                     if (mobile) handleDrawerToggle();
                     option.onClick(event);
@@ -96,8 +97,23 @@ const StyledDrawer: FC<{
                     },
                   }}
                 >
-                  <ListItemIcon>{option.icon}</ListItemIcon>
-                  <ListItemText primary={option.name} />
+                  <ListItemIcon
+                    sx={{
+                      color: selected
+                        ? theme.palette.primary.contrastText.toString()
+                        : null,
+                    }}
+                  >
+                    {option.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={option.name}
+                    sx={{
+                      color: selected
+                        ? theme.palette.primary.contrastText.toString()
+                        : null,
+                    }}
+                  />
                 </ListItemButton>
               </ListItem>
             );

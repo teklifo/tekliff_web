@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Hidden from "@mui/material/Hidden";
-import { useTheme, alpha } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import LoginIcon from "@mui/icons-material/Login";
 import Cookies from "js-cookie";
@@ -64,8 +64,7 @@ const StyledAppbar: FC<{}> = () => {
         elevation={0}
         sx={{
           width: { md: `calc(100% - ${250}px)` },
-          backdropFilter: "blur(20px)",
-          backgroundColor: alpha(theme.palette.background.default, 0.7),
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <Toolbar

@@ -19,6 +19,7 @@ import ImageIcon from "@mui/icons-material/Image";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useTheme } from "@mui/material/styles";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useSnackbar } from "notistack";
@@ -44,6 +45,7 @@ const CreateCompany: NextPage = () => {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
+  const theme = useTheme();
 
   const {
     state: { auth },
@@ -143,12 +145,22 @@ const CreateCompany: NextPage = () => {
         <title>{t(`common:projectTitle`)}</title>
       </Head>
       <Container
+        disableGutters
         sx={{
           mt: 12,
           mb: 10,
         }}
       >
-        <form onSubmit={formik.handleSubmit}>
+        <Box
+          component="form"
+          onSubmit={formik.handleSubmit}
+          sx={{
+            padding: { xs: 2, md: 8 },
+            borderRadius: 4,
+            backgroundColor: theme.palette.background.default,
+            border: `1px solid ${theme.palette.divider.toString()}`,
+          }}
+        >
           <Typography
             variant="h1"
             fontSize={"2rem"}
@@ -364,7 +376,7 @@ const CreateCompany: NextPage = () => {
               </Typography>
             )}
           </Button>
-        </form>
+        </Box>
       </Container>
     </Fragment>
   );

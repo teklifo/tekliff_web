@@ -19,6 +19,7 @@ import MenuItem from "@mui/material/MenuItem";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import { useTheme } from "@mui/material/styles";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useSnackbar } from "notistack";
@@ -49,6 +50,7 @@ const ItemsDownload: NextPage = () => {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
+  const theme = useTheme();
 
   const [columns, setColumns] = useState<ColumnInformation[]>([]);
   const [rows, setRows] = useState<{ [propKey: string]: string }[]>([]);
@@ -162,12 +164,22 @@ const ItemsDownload: NextPage = () => {
         <title>{t(`common:projectTitle`)}</title>
       </Head>
       <Container
+        disableGutters
         sx={{
           mt: 12,
           mb: 10,
         }}
       >
-        <form onSubmit={formik.handleSubmit}>
+        <Box
+          component="form"
+          onSubmit={formik.handleSubmit}
+          sx={{
+            padding: { xs: 2, md: 8 },
+            borderRadius: 4,
+            backgroundColor: theme.palette.background.default,
+            border: `1px solid ${theme.palette.divider.toString()}`,
+          }}
+        >
           <Typography
             variant="h1"
             fontSize={"2rem"}
@@ -240,7 +252,7 @@ const ItemsDownload: NextPage = () => {
               </Button>
             </Fragment>
           )}
-        </form>
+        </Box>
       </Container>
     </Fragment>
   );

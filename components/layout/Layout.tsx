@@ -12,6 +12,7 @@ import Head from "next/head";
 import Router, { useRouter } from "next/router";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import GlobalStyles from "@mui/material/GlobalStyles";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Close from "@mui/icons-material/Close";
@@ -20,7 +21,12 @@ import nprogress from "nprogress";
 import { loadUser } from "../../actions/auth";
 import { AppContext } from "../../store/appContext";
 import StyledAppbar from "./StyledAppBar";
-import { lightTheme, darkTheme } from "../../utils/theme";
+import {
+  lightTheme,
+  darkTheme,
+  lightBodyColor,
+  darkBodyColor,
+} from "../../utils/theme";
 
 const Layout: FC<{
   displayDrawer: boolean;
@@ -105,6 +111,13 @@ const Layout: FC<{
           }}
         >
           <CssBaseline />
+          <GlobalStyles
+            styles={{
+              body: {
+                backgroundColor: darkMode ? darkBodyColor : lightBodyColor,
+              },
+            }}
+          />
           <Box sx={{ display: "flex" }}>
             {!hideAppbar && <StyledAppbar />}
             <Box

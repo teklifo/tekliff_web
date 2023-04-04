@@ -1,10 +1,12 @@
 import { createTheme } from "@mui/material/styles";
 
-export const primaryColor = "#407BFF";
-export const lightPrimaryColor = "#709DFF";
+export const primaryColor = "#5CC163";
+export const lightPrimaryColor = "#7ACD7F";
 export const lightColor = "#FFFFFF";
 export const darkColor = "#1F1C21";
 export const softDarkColor = "#29262C";
+export const lightBodyColor = "#F0F9F1";
+export const darkBodyColor = "#141414";
 
 export const lightTheme = createTheme({
   typography: {
